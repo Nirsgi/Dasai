@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>ああああああああああああ</title>
+	<style>
+		#degita {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+
+
+<canvas id="canvas"></canvas>
+<div>
+<canvas id="canvas1"></canvas>
+</div>
+<style>
+
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+canvas1 {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+</style>
+<body bgcolor="#000000">
+
+<script>
+//真のマップは下にあるよ
+var map0 = '';
+var map1 = [];
+
+</script>
+
+<script>
+map0 =  '\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777721133211111111111331111177777777777777777777\
+7777777777777777772221222211111111111333111122777777777777777777\
+7777777777777777722211122222111111111133111112077777777777777777\
+7777777777777777222111122222222222111133311112222777777777777777\
+7777777777777722221111022222222222211113331111222207777777777777\
+7777777777772222111100022222222222211111331221221100077777777777\
+7777777777000222210000002222226222221111332221220000007777777777\
+7777777770000022000000002222220222221111333121220000000777777777\
+7777777770000000000000000222220022222111133222220000000077777777\
+7777777770000000000000000022222002222121131212200000000777777777\
+7777777770000000000000000022222202222220032222200000077777777777\
+77777777700000001111111000222222022222200022212000000M0007777777\
+7777777711100001111111110002222200222220001111200000777007777777\
+7777777713111011133333111000022220222200001110200000770007777777\
+7777777113301111333113311100000000000000000000000007700007777777\
+7777777111333113331111331100000002200000000000000777111007777777\
+7777770001133313311111107777000002110000000000007713331117777777\
+7777770000113313111001117777700002100000000000077011133333777777\
+7777770800007777000000077777770002108000777007770000111111777777\
+7777770000777777700000077777770000000077777007700000000000077777\
+7777770077777777700000077777777000011077777007700000000000077777\
+7777770777777777700006077777777077000077777777700000000000077777\
+7777777777777777700000007777777772121777777777700000222200077777\
+7777777777777777700000007777777770211077777777770000222220077777\
+7777777777777777700000000777777770212007777777770001000220077777\
+7777777777777777700007M77777777770000077777770000033300008077777\
+7777777777777777700777007777777770000777000000000133330000077777\
+7777777777777777777777007777777777777777011111111133330000077777\
+7777777777777777777777777777777777777777111111111113333000077777\
+7777777000777777777777777777777777777772111111111113333000077777\
+7777777010007777777777777777777777777772111111111111033000077777\
+7777771111100077777777777777777777777772221111111111000000777777\
+7777773333111000077777777777777777777777722222100077770000777777\
+7777771113333111000077777777777777777777777222220005070000777777\
+7777771111133333310077777777777777777000077222220000777707777777\
+7777770111111111133000007777777777000006007222220000777777777777\
+7777770000011111311333000000000000000000007222200000077777777777\
+7777770000444441111113304000000000000000007222200220007777777777\
+7777770000444444111111044000000000440440077222444422000777777777\
+7777777000044444444444444000000000444440077004444442200777777777\
+7777777000044444474444444000000000004400077000004444220777777777\
+7777777700000444444444011111000000000000077000004444227777777777\
+7777777770000044444440013331114000000000077000000444447777777777\
+7777777777000800000000013333330022000000077000000444477777777777\
+777777777770000000000001133100000222000002M000000444777777777777\
+7777777777770000000000011331040002220400027000000044777777777777\
+7777777777777000000000001131100002224400027700000007777777777777\
+7777777777777700008000000133100000000000227722008047777777777777\
+7777777777777777000000000113100000000000222722000077777777777777\
+7777777777777777770000000013100000222222222772207777777777777777\
+7777777777777777700000000013000222220002222277277777777777777777\
+7777777777777777772000000000000222220002225277277777777777777777\
+7777777777777777777224400000000222200002222277777777777777777777\
+7777777777777777777722222222400022277777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+7777777777777777777777777777777777777777777777777777777777777777\
+'
+</script>
+
+<script>
+
+//canvasの設定（せってい）
+
+
+canvas.width = window.innerWidth - 50  ;	//canvasの横幅（よこはば）
+canvas.height = window.innerHeight - 50  ;	//canvasの縦幅（たてはば）
+
+if (window.screen.height > window.screen.width){
+canvas1.width = window.innerWidth - 50  ;	
+canvas1.height = window.innerHeight - window.innerWidth - 50  ;	
+}else{canvas1.height = 1}
+
+
+var widorhei = 0
+
+if (window.screen.width <= window.screen.height){
+widorhei = window.innerWidth
+canvas.height = canvas.width
+}
+if (window.screen.width > window.screen.height){
+widorhei = window.screen.height
+canvas.width = canvas.height
+}
+
+var ctx = canvas.getContext( '2d' );//コンテキストを取得（しゅとく）
+ctx.scale(widorhei / 256,widorhei / 256);
+var img = new Image();
+img.src = 'http://twitdoc.com/upload/Nirsgi/GameData1.png'
+ctx.imageSmoothingEnabled = false;
+
+
+var ctx1 = canvas1.getContext( '2d' );//コンテキストを取得（しゅとく）
+ctx1.imageSmoothingEnabled = false;
+
+var key = new Object(); //移動系
+key.y = 0
+key.x = 0
+key.push = '';
+
+var p
+
+var p = []
+p[0] = new Object();//プレイヤー
+p[0].x = 51;
+p[0].y = 39
+p[0].muki = 0
+p[0].ssmd = 0;　//移動中、次のマスまでどのくらいかな
+p[0].x1 = p[0].x
+p[0].y1 = p[0].y
+p[0].x2 = p[0].x
+p[0].y2 = p[0].y
+p[0].x3 = p[0].x
+p[0].y3 = p[0].y
+
+
+p[0].hp = 10;
+p[0].maxhp = 10;
+p[0].mp = 10;
+p[0].maxmp = 10;
+p[0].atk = 10;
+p[0].dfc = 10;
+p[0].soubi =[4];
+p[0].item = [4];
+
+
+p[1] = new Object();//プレイヤー
+p[1].muki = 0
+p[1].ssmd = 0;　//移動中、次のマスまでどのくらいかな
+
+p[1].hp = 10;
+p[1].maxhp = 10;
+p[1].mp = 10;
+p[1].maxmp = 10;
+p[1].atk = 10;
+p[1].dfc = 10;
+p[1].soubi =[4];
+p[1].item = [4];
+
+
+p[2] = new Object();//プレイヤー
+p[2].muki = 0
+p[2].ssmd = 0;　//移動中、次のマスまでどのくらいかな
+
+
+p[2].hp = 10;
+p[2].maxhp = 10;
+p[2].mp = 10;
+p[2].maxmp = 10;
+p[2].atk = 10;
+p[2].dfc = 10;
+p[2].soubi =[4];
+p[2].item = [4];
+
+
+var mv = 0
+
+var mtm = 30;　//見た目切り替え速度　(右手を前?　左手を前?)　大遅
+var pmtm = 30;　//上のプレイヤー版
+var mt = 0//こいつを切り替え
+var pmt = 0
+
+//設定系
+var time = 0
+var map = [];
+var mapid = 0
+var btl = 0//1はバトル
+
+
+function mapc(){
+
+ if ( mapid == 0 ) {
+
+  for ( i = 0; i < 64; i++){
+    map[i] = map0.substr( i * 64 , 64 )
+  }
+
+ }else {
+
+ for ( i = 0; i < 32; i++){
+   map[i] = map0.substr( i * 32 , 32 )
+  }
+
+}
+}
+
+function kazu( a ){
+
+if ( a == '0'){return 0}
+if ( a == '1'){return 1}
+if ( a == '2'){return 2}
+if ( a == '3'){return 3}
+if ( a == '4'){return 4}
+if ( a == '5'){return 5}
+if ( a == '6'){return 6}
+if ( a == '7'){return 7}
+if ( a == '8'){return 8}
+if ( a == '9'){return 9}
+if ( a == 'A'){return 10}
+if ( a == 'B'){return 11}
+if ( a == 'C'){return 12}
+if ( a == 'D'){return 13}
+if ( a == 'E'){return 14}
+if ( a == 'F'){return 15}
+if ( a == 'G'){return 16}
+if ( a == 'H'){return 17}
+if ( a == 'I'){return 18}
+if ( a == 'J'){return 19}
+if ( a == 'K'){return 20}
+if ( a == 'L'){return 21}
+if ( a == 'M'){return 22}
+if ( a == 'N'){return 23}
+if ( a == 'O'){return 24}
+if ( a == 'P'){return 25}
+
+
+}
+
+
+ 
+mapid = 0
+mapc();
+
+
+//コントロール系
+var s0 = 0//何を選択? 1 YesNo　2フィールド 3バトル　4味方の誰に? 5どの道具　6どの特技 7どの敵に  8どの装備 (+10 プレイヤー2、+20 プレイヤー3) 
+var s1 = [];//s0に選択したやつ
+
+for (i = 0; i < 33; i += 1){s1[i] = 0}
+
+var text = 
+`うわああああああああ/あああああああああああああああああ`//これをteに追加していく。
+var te = ''//表示する方
+var tepls = ''//後ろに追加 
+var tex = 0
+var textstop = 0
+var mous = 0
+function main() {
+//タイマー系
+
+var mtmm = time % mtm;//見た目切り替え
+var pmtmm = time % pmtm;//見た目切り替え
+if (mtmm == 0){if (mt == 0){mt = 1}; if(mt == 1){mt = 0}}
+if (pmtmm == 0){if (pmt == 0){pmt = 1}else{pmt = 0}}
+
+time += 1;
+
+if (text == ''){}else{
+ if (time % 3 == 0 && textstop == 0 && s0 == 0) {
+  if (tex >= text.length){tex = 0;text = ''}else{
+   te += text.substr(tex,1)
+   tex += 1
+  }
+ }
+}
+
+//イベント系
+
+
+var habataka = window.screen.height  / window.screen.width
+
+var ctly = 0//＋の場所
+if (window.screen.width * 1.2 > window.screen.height ){ctly = window.screen.height / 2} 
+if (window.screen.height >= window.screen.width * 1.2){ctly = window.screen.width + (window.screen.height - window.screen.width) / 2} 
+
+
+function mouse(x,y,a){//a は　down/start (0) かmove(1)かup(2)か。
+  var xx = ((window.screen.width / 2) - (x)) ** 2 
+  var yy = ((ctly) - (y)) ** 2
+ if (te == '' && key.x == 0 && key.y == 0　&& s0 == 0){
+  if ((x <  window.screen.width / 2 ) && (xx > yy)) {key.x = -10;key.y = 0};
+  if ((x >  window.screen.width / 2 ) && (xx > yy)) {key.x = 10;key.y = 0 };
+  if ((y <  ctly ) && (xx < yy)) {key.y = -10;key.x = 0};
+  if ((y > ctly )  && (xx < yy)) {key.y = 10;key.x = 0};
+ }
+
+if (mv == 0){//初動か判定
+
+ if (s0 > 0){
+  if ((x <  window.screen.width / 2 ) && (xx > yy)) {s1[s0] -= 1};
+  if ((x >  window.screen.width / 2 ) && (xx > yy)) {s1[s0] += 1 };
+ }
+  console.log('n')
+ if ((xx < window.screen.height ** 2 / 100 && yy < window.screen.height ** 2 / 100) && (y < ctly)){key.x = 0;key.y = 0;push(0)}//プッシュイヴェント
+ if ((xx < window.screen.height ** 2 / 100 && yy < window.screen.height ** 2 / 100) && (y > ctly)){key.x = 0;key.y = 0;push(1)}//プッシュイヴェンと
+}
+mv = 1
+//te = Math.trunc(x) + 'a' + Math.trunc(y) + 'a' +  (window.screen.width / 2) + 'a' + 
+}
+
+//コントロール系
+
+
+window.addEventListener('touchstart' , () => {mous =  1;var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4 ,touchY * 0.5);})
+window.addEventListener('touchmove' , () => {mous = 1; if (mv == 1){var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4,touchY * 0.5);}})
+window.addEventListener('touchend', () => {mous = 1;key.x = 0; key.y = 0;mv = 0})
+
+
+window.addEventListener('mousedown' , () => { if ( mous == 0){mouse(event.screenX,event.screenY,0);}})
+window.addEventListener('mousemove' , () => { if (mous == 0){ if (mv == 1){mouse(event.screenX,event.screenY,1);}}})
+window.addEventListener('mouseup', () => {if (mous == 0){key.x = 0; key.y = 0;mv = 0}})
+
+//マップ描画系
+if (btl == 0){//フィールド～～～～～～～～～～～～～～～～～～～～～～～～～～～～～
+var xs = 0
+var ys = 0
+
+if (p[0].muki == 0){ys = 1}
+if (p[0].muki == 1){xs = -1}
+if (p[0].muki == 2){ys = -1}
+if (p[0].muki == 3){xs = 1}
+
+var xs1 = 0
+var ys1 = 0
+if (p[0].x1 < p[0].x2){xs1 = -1}
+if (p[0].x1 > p[0].x2){xs1 = 1}
+if (p[0].y1 < p[0].y2){ys1 = -1}
+if (p[0].y1 > p[0].y2){ys1 = 1}
+
+var xs2 = 0
+var ys2 = 0
+if (p[0].x2 < p[0].x3){xs2 = -1}
+if (p[0].x2 > p[0].x3){xs2 = 1}
+if (p[0].y2 < p[0].y3){ys2 = -1}
+if (p[0].y2 > p[0].y3){ys2 = 1}
+
+
+for (x = p[0].x - 5 ; x < p[0].x + 5; x ++ ) {
+for (y = p[0].y - 5; y < p[0].y + 5; y ++ ) {
+var x1 = x;
+var y1 = y;
+if (x1 < 0) { x1 = 64 + x }
+if (x1 > 63) { x1 = x - 64 }
+if (y1 < 0) { y1 = 64 + y }
+if (y1 > 63) { y1 = y - 64 }
+var xx = kazu(map[ y1 ].substr( x1 , 1 ));
+     ctx.drawImage(img, Math.trunc(xx  / 8) * 16 , (xx % 8) * 16 ,16,16,(x1 - p[0].x + 5) * 32 - 56 + xs * (p[0].ssmd) ,(y1 - p[0].y+ 5) * 32 -56 + ys * (p[0].ssmd) ,32,32);
+}
+}
+
+ ctx.drawImage(img,96, (p[2].muki * 2 + pmt) * 16 ,16,16,(p[0].x2 - p[0].x + 5) * 32 - 56 + xs * (p[0].ssmd) - xs2 * (p[0].ssmd),(p[0].y2 - p[0].y+ 5) * 32 -56 + ys * (p[0].ssmd) - ys2 * (p[0].ssmd)  ,32,32);
+ ctx.drawImage(img, 80, (p[1].muki * 2 + pmt) * 16 ,16,16,(p[0].x1 - p[0].x + 5) * 32 - 56 + xs * (p[0].ssmd) - xs1 * (p[0].ssmd),(p[0].y1 - p[0].y+ 5) * 32 -56 + ys * (p[0].ssmd) - ys1 * (p[0].ssmd)  ,32,32);
+ ctx.drawImage(img, 64, (p[0].muki * 2 + pmt) * 16 ,16,16,(4) * 32 - 24,(4) * 32 -24 ,32,32);
+
+
+//キャラ移動系
+
+if (p[0].ssmd == 0){if (key.x == 0 && key.y == 0){}else{move()}}
+function move() {
+
+p[0].x3 = p[0].x2
+p[0].y3 = p[0].y2
+p[0].x2 = p[0].x1
+p[0].y2 = p[0].y1
+p[0].x1 = p[0].x
+p[0].y1 = p[0].y
+
+
+if (key.x < 0){  p[0].x -= 1;p[0].muki =  1;p[0].ssmd = 32} 
+if (key.x > 0){  p[0].x += 1;p[0].muki =  3;p[0].ssmd = 32  } 
+if (key.y < 0){  p[0].y -= 1;p[0].muki =  2 ;p[0].ssmd = 32 } 
+if (key.y > 0){  p[0].y += 1;p[0].muki =  0 ;p[0].ssmd = 32 } 
+
+if (p[0].x2 < p[0].x1){p[1].muki = 3}
+if (p[0].x2 > p[0].x1){p[1].muki = 1}
+if (p[0].y2 < p[0].y1){p[1].muki = 0}
+if (p[0].y2 > p[0].y1){p[1].muki = 2}
+
+if (p[0].x3 < p[0].x2){p[2].muki = 3}
+if (p[0].x3 > p[0].x2){p[2].muki = 1}
+if (p[0].y3 < p[0].y2){p[2].muki = 0}
+if (p[0].y3 > p[0].y2){p[2].muki = 2}
+
+var mapn = kazu(map[ p[0].y].substr( p[0].x , 1 )) //自分のいるタイル
+if (mapn == 3 || mapn == 7 || mapn == 11 || mapn == 12 || mapn == 13 || mapn == 19 || mapn == 20 || mapn == 24){
+if (key.x < 0){p[0].x += 1;p[0].ssmd = 0} //壁にぶつかったら、戻る。
+if (key.x > 0){p[0].x -= 1;p[0].ssmd = 0} 
+if (key.y < 0){p[0].y += 1;p[0].ssmd = 0} 
+if (key.y > 0){p[0].y -= 1;p[0].ssmd = 0} 
+modoru()
+}
+
+
+
+}
+
+function modoru() {
+p[0].x1 = p[0].x2
+p[0].y1 = p[0].y2
+
+p[0].x2 = p[0].x3
+p[0].y2 = p[0].y3
+}
+
+}else{ctx1.drawImage(img, 48,96 ,16,16,0,0,canvas1.width,canvas1.height);//バトル～～～～～～～～～～～～～～～～～～～～～～
+
+
+
+
+
+
+
+
+
+
+
+}//～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～
+
+
+//コントロール系
+function sss(n){
+if (s1[s0] == n){return '>'}else{return ' '}
+}
+
+function push(n){//::::::::::::::::::::::::::::::::::
+
+
+
+if (s0 == 0) {
+
+ if (n == 0 && (te == '')){s0 = 2;}//フィールドでアクションしよう
+ if ( textstop > 0 ){textstop = 0;}//テキストストップ解除
+ if ( text.length == 0 && !(te == '') ){te = '';}//テキスト消去
+
+ }
+
+
+}
+
+
+if (s0 == 1){
+ if (s1 < 0){s1 = 1}
+ if (s1 > 1){s1 = 0}
+}
+if (s0 == 2){te = sss(0) + '話す' + sss(1) + '道具' + sss(2) + '調べる'
+ if (s1 < 0){s1 = 2}
+ if (s1 > 2){s1 = 0}
+}
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//テキスト描画系
+function ftx (text, x, y) { //コピペコード。
+  var textList = text.split('/');// "/"で分割して配列にするわ。
+  var lineHeight = ctx.measureText("あ").width;// あ　はフォントのサイズを取得するのに利用しているだけなり。
+  textList.forEach(function(text, i) {//配列を順番に読み出して、y（高さ）を計算しながら描画していくぞよ。
+   ctx.fillText(text, x, y+(lineHeight+2)*i);
+  });
+};
+
+
+
+if (te.length > 0){
+ctx.strokeStyle = '#fff';
+ctx.fillStyle = '#000';
+ctx.lineWidth = 2;
+ctx.fillRect(0,157,300,155);
+ctx.fillStyle = '#fff';
+ctx.font = '14px MS UI Gothic'
+ftx(te,2,170)
+}
+
+if (p[0].ssmd > 0){p[0].ssmd -= 1} 
+if (time > 10000){time = 0}
+ctx1.drawImage(img, 48,112 ,16,16,0,0,canvas1.width,canvas1.height);
+requestAnimationFrame(main);
+}
+
+//ページと依存（いぞん）している全てのデータが読み込まれたら、メインループ開始
+addEventListener('load', main(), false);
+	</script>
+</body>
+</html>
