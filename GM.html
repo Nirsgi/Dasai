@@ -119,23 +119,23 @@ map0 =  '\
 //canvasの設定（せってい）
 
 
-canvas.width = window.innerWidth - 3  ;	//canvasの横幅（よこはば）
-canvas.height = window.innerHeight - 3  ;	//canvasの縦幅（たてはば）
+canvas.width = window.innerWidth - 50  ;	//canvasの横幅（よこはば）
+canvas.height = window.innerHeight - 50  ;	//canvasの縦幅（たてはば）
 
-if (screen.height > screen.width){
-canvas1.width = window.innerWidth - 3  ;	
-canvas1.height = (window.innerHeight - window.innerWidth ) - 3  ;	
+if (innerHeight > innerWidth){
+canvas1.width = window.innerWidth - 50  ;	
+canvas1.height = (window.innerHeight - window.innerWidth )  ;	
 }else{canvas1.height = 1}
 
 
 var widorhei = 0
 
-if (screen.width <= screen.height){
-widorhei = window.screen.width
+if (innerWidth <= innerHeight){
+widorhei = window.innerWidth
 canvas.height = canvas.width
 }
-if (screen.width > screen.height){
-widorhei = window.screen.height
+if (innerWidth > innerHeight){
+widorhei = window.innerHeight
 canvas.width = canvas.height
 }
 
@@ -313,19 +313,20 @@ if (text == ''){}else{
 //イベント系
 
 
-var habataka = window.screen.height  / window.screen.width
+var habataka = window.innerHeight  / window.innerWidth
 
 var ctly = 0//＋の場所
-if (screen.width * 1.2 > screen.height ){ctly = screen.height / 2} 
-if (screen.height >= screen.width * 1.2){ctly = screen.height - (screen.height - screen.width) }
+if (window.innerWidth * 1.2 > window.innerHeight ){ctly = window.innerHeight / 2} 
+if (window.innerHeight >= window.innerWidth * 1.2){ctly = window.innerWidth + (window.innerHeight - window.innerWidth) / 2 }
 
 
 function mouse(x,y,a){//a は　down/start (0) かmove(1)かup(2)か。
-  var xx = ((window.screen.width / 2) - (x)) ** 2 
+  var xx = ((window.innerWidth / 2) - (x)) ** 2 
   var yy = ((ctly) - (y)) ** 2
+ te = yy + 'u'
  if (te == '' && key.x == 0 && key.y == 0　&& s0 == 0){
-  if ((x <  window.screen.width / 2 ) && (xx > yy)) {key.x = -10;key.y = 0};
-  if ((x >  window.screen.width / 2 ) && (xx > yy)) {key.x = 10;key.y = 0 };
+  if ((x <  window.innerWidth / 2 ) && (xx > yy)) {key.x = -10;key.y = 0};
+  if ((x >  window.innerWidth / 2 ) && (xx > yy)) {key.x = 10;key.y = 0 };
   if ((y <  ctly ) && (xx < yy)) {key.y = -10;key.x = 0};
   if ((y > ctly )  && (xx < yy)) {key.y = 10;key.x = 0};
  }
@@ -333,22 +334,22 @@ function mouse(x,y,a){//a は　down/start (0) かmove(1)かup(2)か。
 if (mv == 0){//初動か判定
 
  if (s0 > 0){
-  if ((x <  window.screen.width / 2 ) && (xx > yy)) {s1[s0] -= 1};
-  if ((x >  window.screen.width / 2 ) && (xx > yy)) {s1[s0] += 1 };
+  if ((x <  window.innerWidth / 2 ) && (xx > yy)) {s1[s0] -= 1};
+  if ((x >  window.innerWidth / 2 ) && (xx > yy)) {s1[s0] += 1 };
  }
   console.log('n')
- if ((xx < window.screen.height ** 2 / 100 && yy < window.screen.height ** 2 / 100) && (y < ctly)){key.x = 0;key.y = 0;push(0)}//プッシュイヴェント
- if ((xx < window.screen.height ** 2 / 100 && yy < window.screen.height ** 2 / 100) && (y > ctly)){key.x = 0;key.y = 0;push(1)}//プッシュイヴェンと
+ if ((xx < window.innerHeight ** 2 / 100 && yy < window.innerHeight ** 2 / 100) && (y < ctly)){key.x = 0;key.y = 0;push(0)}//プッシュイヴェント
+ if ((xx < window.innerHeight ** 2 / 100 && yy < window.innerHeight ** 2 / 100) && (y > ctly)){key.x = 0;key.y = 0;push(1)}//プッシュイヴェンと
 }
 mv = 1
-//te = Math.trunc(x) + 'a' + Math.trunc(y) + 'a' +  (window.screen.width / 2) + 'a' + 
+//te = Math.trunc(x) + 'a' + Math.trunc(y) + 'a' +  (window.innerWidth / 2) + 'a' + 
 }
 
 //コントロール系
 
 
-window.addEventListener('touchstart' , () => {mous =  1;var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4 ,touchY * 0.5);te = (touchX + 0.5) / (screen.width + 0.5 ) + 'a' })
-window.addEventListener('touchmove' , () => {mous = 1; if (mv == 1){var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4,touchY * 0.5);}})
+window.addEventListener('touchstart' , () => {mous =  1;var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX,touchY)})
+window.addEventListener('touchmove' , () => {mous = 1; if (mv == 1){var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX,touchY);}})
 window.addEventListener('touchend', () => {mous = 1;key.x = 0; key.y = 0;mv = 0})
 
 
