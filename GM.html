@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="UTF-8">
-	<title>あああああああああああuあ</title>
+	<title>あ調整中あ</title>
 	<style>
 		#degita {
 			position: absolute;
@@ -317,7 +317,7 @@ var habataka = window.screen.height  / window.screen.width
 
 var ctly = 0//＋の場所
 if (screen.width * 1.2 > screen.height ){ctly = screen.height / 2} 
-if (screen.height >= screen.width * 1.2){ctly = screen.height - (screen.height - screen.width) 
+if (screen.height >= screen.width * 1.2){ctly = screen.height - (screen.height - screen.width) }
 
 
 function mouse(x,y,a){//a は　down/start (0) かmove(1)かup(2)か。
@@ -347,7 +347,7 @@ mv = 1
 //コントロール系
 
 
-window.addEventListener('touchstart' , () => {mous =  1;var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4 ,touchY * 0.5);})
+window.addEventListener('touchstart' , () => {mous =  1;var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4 ,touchY * 0.5);te = screen.width / (touchX + 0.5) + ':' + screen.height / (touchY + 0.5) })
 window.addEventListener('touchmove' , () => {mous = 1; if (mv == 1){var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4,touchY * 0.5);}})
 window.addEventListener('touchend', () => {mous = 1;key.x = 0; key.y = 0;mv = 0})
 
@@ -488,7 +488,7 @@ if (s0 == 1){
  if (s1 < 0){s1 = 1}
  if (s1 > 1){s1 = 0}
 }
-if (s0 == 2){te = sss(0) + '話す' + sss(1) + '道具' + sss(2) + '調べる'
+if (s0 == 2){//te = sss(0) + '話す' + sss(1) + '道具' + sss(2) + '調べる'
  if (s1 < 0){s1 = 2}
  if (s1 > 2){s1 = 0}
 }
