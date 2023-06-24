@@ -18,6 +18,21 @@
 </div>
 <style>
 
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+canvas1 {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
 
 </style>
@@ -105,7 +120,7 @@ map0 =  '\
 
 
 canvas.width = window.innerWidth - 3  ;	//canvasの横幅（よこはば）
-canvas.height = window.innerHheight - 3  ;	//canvasの縦幅（たてはば）
+canvas.height = window.innerHeight - 3  ;	//canvasの縦幅（たてはば）
 
 if (screen.height > screen.width){
 canvas1.width = window.innerWidth - 3  ;	
@@ -116,11 +131,11 @@ canvas1.height = (window.innerHeight - window.innerWidth ) - 3  ;
 var widorhei = 0
 
 if (screen.width <= screen.height){
-widorhei = window.innerHeight
+widorhei = window.screen.width
 canvas.height = canvas.width
 }
 if (screen.width > screen.height){
-widorhei = window.innerHeight
+widorhei = window.screen.height
 canvas.width = canvas.height
 }
 
