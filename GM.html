@@ -119,12 +119,12 @@ map0 =  '\
 //canvasの設定（せってい）
 
 
-canvas.width = screen.width - 50  ;	//canvasの横幅（よこはば）
-canvas.height = screen.height - 50  ;	//canvasの縦幅（たてはば）
+canvas.width = screen.width - 3  ;	//canvasの横幅（よこはば）
+canvas.height = screen.height - 3  ;	//canvasの縦幅（たてはば）
 
-if (window.screen.height > window.screen.width){
-canvas1.width = screen.width - 50  ;	
-canvas1.height = (screen.height - screen.width ) - 50  ;	
+if (screen.height > screen.width){
+canvas1.width = screen.width - 3  ;	
+canvas1.height = (screen.height - screen.width ) - 3  ;	
 }else{canvas1.height = 1}
 
 
@@ -134,7 +134,7 @@ if (screen.width <= screen.height){
 widorhei = screen.height
 canvas.height = canvas.width
 }
-if (window.screen.width > window.screen.height){
+if (screen.width > screen.height){
 widorhei = screen.height
 canvas.width = canvas.height
 }
