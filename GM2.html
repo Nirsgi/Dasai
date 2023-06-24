@@ -348,8 +348,8 @@ mv = 1
 //コントロール系
 
 
-window.addEventListener('touchstart' , () => {mous =  1;var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;})
-window.addEventListener('touchmove' , () => {mous = 1; if (mv == 1){var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX * 0.4,touchY * 0.5);}})
+window.addEventListener('touchstart' , () => {mous =  1;var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX,touchY)})
+window.addEventListener('touchmove' , () => {mous = 1; if (mv == 1){var touchObject = event.changedTouches[0] ;var touchX = touchObject.pageX ;var touchY = touchObject.pageY ;mouse(touchX,touchY);}})
 window.addEventListener('touchend', () => {mous = 1;key.x = 0; key.y = 0;mv = 0})
 
 
