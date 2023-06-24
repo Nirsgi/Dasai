@@ -119,23 +119,23 @@ map0 =  '\
 //canvasの設定（せってい）
 
 
-canvas.width = window.innerWidth - 50  ;	//canvasの横幅（よこはば）
-canvas.height = window.innerHeight - 50  ;	//canvasの縦幅（たてはば）
+canvas.width = screen.width - 50  ;	//canvasの横幅（よこはば）
+canvas.height = screen.height - 50  ;	//canvasの縦幅（たてはば）
 
 if (window.screen.height > window.screen.width){
-canvas1.width = window.innerWidth - 50  ;	
-canvas1.height = window.innerHeight - window.innerWidth - 50  ;	
+canvas1.width = sceen.width - 50  ;	
+canvas1.height = (screen.height - screen.width ) - 50  ;	
 }else{canvas1.height = 1}
 
 
 var widorhei = 0
 
-if (window.screen.width <= window.screen.height){
-widorhei = window.innerWidth
+if (screen.width <= screen.height){
+widorhei = screen.height
 canvas.height = canvas.width
 }
 if (window.screen.width > window.screen.height){
-widorhei = window.screen.height
+widorhei = screen.height
 canvas.width = canvas.height
 }
 
@@ -316,8 +316,8 @@ if (text == ''){}else{
 var habataka = window.screen.height  / window.screen.width
 
 var ctly = 0//＋の場所
-if (window.screen.width * 1.2 > window.screen.height ){ctly = window.screen.height / 2} 
-if (window.screen.height >= window.screen.width * 1.2){ctly = window.screen.width + (window.screen.height - window.screen.width) / 2} 
+if (screen.width * 1.2 > screen.height ){ctly = screen.height / 2} 
+if (screen.height >= screen.width * 1.2){ctly = screen.height - (screen.height - screen.width) 
 
 
 function mouse(x,y,a){//a は　down/start (0) かmove(1)かup(2)か。
