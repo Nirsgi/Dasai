@@ -154,6 +154,22 @@ key.y = 0
 key.x = 0
 key.push = '';
 
+var fontFace = new FontFace(
+  'Pixel', 
+  'url(PixelMplus12-Regular.ttf)', 
+  { style: 'normal', weight: 700}
+);
+ 
+fontFace.load().then(function(loadedFace){
+  /// フォント読み込み成功
+  /// body要素全体にそれを適用する
+  document.fonts.add(loadedFace);
+  document.body.style.fontFamily = '"Pixel"';
+}).catch(function(e){
+  /// フォント読み込み失敗
+  console.error('読み込み失敗...');
+});
+
 var p
 
 var p = []
@@ -176,37 +192,13 @@ p[0].mp = 10;
 p[0].maxmp = 10;
 p[0].atk = 10;
 p[0].dfc = 10;
-p[0].soubi =[4];
-p[0].item = [4];
+p[0].soubi =[];
+p[0].item = [];
 
 
-p[1] = new Object();//プレイヤー
-p[1].muki = 0
-p[1].ssmd = 0;　//移動中、次のマスまでどのくらいかな
+p[1] = Object.assign({},p[0])
+p[2] = Object.assign({},p[0])
 
-p[1].hp = 10;
-p[1].maxhp = 10;
-p[1].mp = 10;
-p[1].maxmp = 10;
-p[1].atk = 10;
-p[1].dfc = 10;
-p[1].soubi =[4];
-p[1].item = [4];
-
-
-p[2] = new Object();//プレイヤー
-p[2].muki = 0
-p[2].ssmd = 0;　//移動中、次のマスまでどのくらいかな
-
-
-p[2].hp = 10;
-p[2].maxhp = 10;
-p[2].mp = 10;
-p[2].maxmp = 10;
-p[2].atk = 10;
-p[2].dfc = 10;
-p[2].soubi =[4];
-p[2].item = [4];
 
 
 var mv = 0
@@ -486,14 +478,14 @@ if (s0 == 2 && n == 1){s0 = 0;te = ''}
 }//push
 	//超えてないか監視
  if (s0 == 1){
- if (s1 < 0){s1 = 1}
- if (s1 > 1){s1 = 0}
+ if (s1[s0] < 0){s1[s0] = 1}
+ if (s1[s0] > 1){s1[s0] = 0}
  }
 
 if (s0 == 2){
-te = sss(0) + '話す' + sss(1) + '道具' + sss(2) + '調べる'
- if (s1 < 0){s1 = 2}
- if (s1 > 2){s1 = 0}
+te = sss(0) + '話す' + sss(1) + '道具' + sss(2) + '調べる' + sss(3) + 'ステータス'
+ if (s1[s0] < 0){s1[s0] = 3}
+ if (s1[s0] > 3){s1[s0] = 0}
  }
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -514,7 +506,7 @@ ctx.fillStyle = '#000';
 ctx.lineWidth = 2;
 ctx.fillRect(0,157,300,155);
 ctx.fillStyle = '#fff';
-ctx.font = '14px MS UI Gothic'
+ctx.font = '14px Pixel'
 ftx(te,2,170)
 }
 
