@@ -699,11 +699,12 @@ var kao = -1
 var kaosetu = ''
 
 
-let aud = new Audio("DasaiBattle.mp3");
+var aud = new Audio("DasaiBattle.mp3");
 aud.loop= true
 var audp = ""//audmと一致してなかったらaudを変えよう
 var audm = "DasaiWalk"//音楽を買えるならこっちを変更する
 
+var textaud = new Audio("Text.mp3");
 
 function main() {//メインるーーーーーーーーーーーーーーーーーーーーーーーぷ
 //タイマー系
@@ -716,17 +717,13 @@ if (pmtmm == 0){if (pmt == 0){pmt = 1}else{pmt = 0}}
 time += 1;
 
 
-if (!(audp == audm) && aud.muted == false){
-audp = audm
-aud = new Audio(audm + ".mp3");
-aud.loop= true
-aud.play();
-}
 
 
 if (text == ''){}else{
  if (time % 3 == 0 && textstop == 0 && s0 == 0) {
   if (tex >= text.length){tex = 0;text = ''}else{
+   textaud.currentTime = 0;
+   textaud.play();
    te += text.substr(tex,1)
    tex += 1
   }
@@ -1301,6 +1298,17 @@ if (p[0].ssmd > 0){p[0].ssmd -= 1}
 if (time > 10000){time = 0}
 ctx.fillStyle = '#fff';
 ctx1.drawImage(img, 48,112 ,16,16,0,0,canvas1.width,canvas1.height);
+
+//if (aud.playing()){
+
+if (!(audp == audm) && aud.muted == false){
+aud.pause()
+audp = audm
+aud = new Audio(audm + ".mp3");
+aud.loop= true
+aud.play();
+//}
+}
 requestAnimationFrame(main);
 }
 
@@ -1316,6 +1324,14 @@ addEventListener('load',() => {ctx.drawImage(iimg,0,0,256,256);
 ctx.font = '14px Pixel'
 ctx.fillStyle = '#f0f';
 ctx.fillText('タップorクリックorキー操作で開始',2,170)})
+
+window.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+	aud.muted = true;
+    } else {
+	aud.muted = false;
+    }
+});
 
 // スクロールを禁止にする関数
 function disableScroll(event) {
