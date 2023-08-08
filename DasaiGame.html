@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 	<meta charset="UTF-8">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
 <head>
 <audio id="audio"></audio>
 	<title>ヴぇヴぇヴぇえヴぇーい</title>
+	<p class="baka" id="baka">とてもクオリティの低いブラウザゲーRPG!<br>プレイする価値があるか?ないか?<br><br>知らねぇよ。</p>
 	<style>
 		#degita {
 			position: absolute;
@@ -17,7 +20,11 @@
 <canvas id="canvas1"></canvas>
 </div>
 <style>
-
+html {
+-ms-touch-action:manipulation;
+touch-action:manipulation;
+}
+							
 canvas {
     padding-left: 0;
     padding-right: 0;
@@ -25,7 +32,9 @@ canvas {
     margin-right: auto;
     display: block;
 }
-
+.baka {
+	color:#fff;
+}
 canvas1 {
     padding-left: 0;
     padding-right: 0;
@@ -46,6 +55,7 @@ var map1 = [];
 </script>
 
 <script>
+
 map0 =  '\
 7777777777777777777777777777777777777777777777777777777777777777\
 7777777777777777777777777777777777777777777777777777777777777777\
@@ -165,7 +175,7 @@ tek.itemdrop = 0.1;
 tek.x = 0;
 tek.kane = 1;
 tek.exp = 2;
-tek.setumei = 'ウサギではない。/スライムでもない。/強くもない。'
+tek.setumei = 'スライムではない。/ウサギでもない。'
 tekis.push(tek)
 
 
@@ -433,11 +443,251 @@ tek.setumei = '一つ目三本足、口から手の化物。/なんでわざわ�
 tekis.push(tek)
 
 
+tek = new Object()
+tek.name = 'ショククティ'
+tek.image = 15//Gamedata1を参照されたし。
+tek.hp = 72;
+tek.maxhp = 72;
+tek.mp = 0;
+tek.maxmp = 0;
+tek.atk = 27;
+tek.dfc = 17;
+tek.spd = 30;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 59;
+tek.exp = 75;
+tek.setumei = 'タコがひっくり返ったのとは違う。/イカでもない。'
+tekis.push(tek)
 
 
+tek = new Object()
+tek.name = 'ヴザッビ'
+tek.image = 16//Gamedata1を参照されたし。
+tek.hp = 80;
+tek.maxhp = 80;
+tek.mp = 10;
+tek.maxmp = 10;
+tek.atk = 30;
+tek.dfc = 20;
+tek.spd = 28;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 66;
+tek.exp = 80;
+tek.setumei = 'ウサッピをいじめていると、そのうちウサッピはこんなすがたになる。'
+tekis.push(tek)
 
 
-return tekis
+tek = new Object()
+tek.name = ' あ '
+tek.image = 17//Gamedata1を参照されたし。
+tek.hp = 85;
+tek.maxhp = 85;
+tek.mp = 30;
+tek.maxmp = 30;
+tek.atk = 28;
+tek.dfc = 20;
+tek.spd = 30;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 71;
+tek.exp = 88;
+tek.setumei = 'デザイン'
+tekis.push(tek)
+
+tek = new Object()
+tek.name = ' い '
+tek.image = 18//Gamedata1を参照されたし。
+tek.hp = 85;
+tek.maxhp = 100;
+tek.mp = 20;
+tek.maxmp = 20;
+tek.atk = 31;
+tek.dfc = 25;
+tek.spd = 29;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 75;
+tek.exp = 94;
+tek.setumei = 'いろは歌だと最初に来るのに、五十音順だと二番目。/かわいそうだね。'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = ' う '
+tek.image = 19//Gamedata1を参照されたし。
+tek.hp = 93;
+tek.maxhp = 93;
+tek.mp = 0;
+tek.maxmp = 0;
+tek.atk = 36;
+tek.dfc = 26;
+tek.spd = 40;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 80;
+tek.exp = 100;
+tek.setumei = 'バナナ…ではない……のか?'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = 'ミテル'
+tek.image = 20//Gamedata1を参照されたし。
+tek.hp = 96;
+tek.maxhp = 96;
+tek.mp = 50;
+tek.maxmp = 50;
+tek.atk = 32;
+tek.dfc = 25;
+tek.spd = 36;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 87;
+tek.exp = 107;
+tek.setumei = '見て　る　　。        /おまえ　　を。        /じっと　　見　て　　る　。'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = 'だーくふぁいあ'
+tek.image = 21//Gamedata1を参照されたし。
+tek.hp = 101;
+tek.maxhp = 101;
+tek.mp = 40;
+tek.maxmp = 40;
+tek.atk = 43;
+tek.dfc = 26;
+tek.spd = 38;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 94;
+tek.exp = 113;
+tek.setumei = '暗い炎。/危ない。なぜなら、気が付きにくいからだ。'
+tekis.push(tek)
+
+tek = new Object()
+tek.name = 'ハモノダス'
+tek.image = 22//Gamedata1を参照されたし。
+tek.hp = 101;
+tek.maxhp = 101;
+tek.mp = 40;
+tek.maxmp = 40;
+tek.atk = 43;
+tek.dfc = 26;
+tek.spd = 38;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 94;
+tek.exp = 113;
+tek.setumei = '口から刃物持った手を出してるからハモノダス…いいだろ、分かりやすくて！'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = 'メトニク'
+tek.image = 23//Gamedata1を参照されたし。
+tek.hp = 101;
+tek.maxhp = 101;
+tek.mp = 40;
+tek.maxmp = 40;
+tek.atk = 43;
+tek.dfc = 26;
+tek.spd = 38;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 94;
+tek.exp = 113;
+tek.setumei = 'メトショとショククティ、そしてこいつは、実は草食動物。たたビビりだから狂暴なだけ。'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = '悪魔の兵士'
+tek.image = 24//Gamedata1を参照されたし。
+tek.hp = 105;
+tek.maxhp = 105;
+tek.mp = 30;
+tek.maxmp = 30;
+tek.atk = 45;
+tek.dfc = 28;
+tek.spd = 36;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 100;
+tek.exp = 120;
+tek.setumei = '名前がプロパガンダっぽいねー。'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = '悪魔の戦士'
+tek.image = 25//Gamedata1を参照されたし。
+tek.hp = 105;
+tek.maxhp = 105;
+tek.mp = 30;
+tek.maxmp = 30;
+tek.atk = 45;
+tek.dfc = 28;
+tek.spd = 36;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 100;
+tek.exp = 120;
+tek.setumei = 'やっぱ名前がプロパガンダっぽいねー。'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = 'ぴょこっぴー'
+tek.image = 26//Gamedata1を参照されたし。
+tek.hp = 2000;
+tek.maxhp = 2000;
+tek.mp = 300;
+tek.maxmp = 300;
+tek.atk = 80;
+tek.dfc = 50;
+tek.spd = 50;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 1000;
+tek.exp = 1000;
+tek.setumei = '世界征服を目指す、最強の魔王。/すごいカリスマ性の持ち主。/昔あった先住民の国家、ピョンピョコ王国の王家の末裔だそうだ。'
+tekis.push(tek)
+
+
+tek = new Object()
+tek.name = 'シャチョ'
+tek.image = 27//Gamedata1を参照されたし。
+tek.hp = 2200;
+tek.maxhp = 2200;
+tek.mp = 200;
+tek.maxmp = 200;
+tek.atk = 90;
+tek.dfc = 52;
+tek.spd = 55;
+tek.item = '';
+tek.itemdrop = 0;
+tek.x = 0;
+tek.kane = 10000;
+tek.exp = 800;
+tek.setumei = '「国家戦略総合会社」の社長。/その権威は王をも凌ぐ。/彼の強さの源泉は、巨大な欲望と、毎日食べてるジャムパン。'
+tekis.push(tek)
+
+//return tekis
 }
 
 </script>
@@ -483,6 +733,9 @@ if ( a == 'U'){return 30}
 
 
 }
+
+let baka = document.getElementById("baka");
+baka.remove();
 
 canvas.width = window.innerWidth - 50  ;	//canvasの横幅（よこはば）
 canvas.height = window.innerHeight - 50  ;	//canvasの縦幅（たてはば）
@@ -705,9 +958,10 @@ var audp = ""//audmと一致してなかったらaudを変えよう
 var audm = "DasaiWalk"//音楽を買えるならこっちを変更する
 
 var textaud = new Audio("Text.mp3");
-
+var zoom = window.visualViewport.scale
 function main() {//メインるーーーーーーーーーーーーーーーーーーーーーーーぷ
 //タイマー系
+
 
 var mtmm = time % mtm;//見た目切り替え
 var pmtmm = time % pmtm;//見た目切り替え
@@ -1336,6 +1590,7 @@ window.addEventListener('visibilitychange', function() {
 // スクロールを禁止にする関数
 function disableScroll(event) {
   event.preventDefault();
+　document.body.style.zoom=1.0
 }
 
 // スクロール禁止
